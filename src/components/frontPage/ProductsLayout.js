@@ -7,15 +7,35 @@ function ProductsLayout(props) {
       title: "Classic Logo Beanie",
       price: 19.95,
       imageUrl:
-        "https://cdn.shopify.com/s/files/1/2262/1373/products/WTC102291_540x.png",
+        "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_6918_1800x1800.jpg",
     },
     {
       id: 1,
       title: "Classic Logo Beanie",
       price: 19.95,
       imageUrl:
-        "https://cdn.shopify.com/s/files/1/2262/1373/products/WTC102291_540x.png",
+        "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_7077_305151c6-9bea-4ff7-a8f8-acaf0749a87c_1800x1800.jpg",
     },
+    {
+      id: 3,
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2439_9e5aee1f-6219-40ba-9e79-23075d264034_1800x1800.jpg?v=1609950583",
+    },{ 
+    id: 4,
+    title: "Classic Logo Beanie",
+    price: 19.95,
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2554_1800x1800.jpg?v=1609950571",
+  },{
+    id: 3,
+    title: "Classic Logo Beanie",
+    price: 19.95,
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2439_9e5aee1f-6219-40ba-9e79-23075d264034_1800x1800.jpg?v=1609950583",
+  },
+
   ];
   function saveToLocalStorage(e) {
     //const myStorage = window.localStorage

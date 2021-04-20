@@ -19,7 +19,6 @@ function NavBar(props) {
 
   function hideclicked() {
     setShow(!show);
-    console.log(show + " state close");
   }
   return (
     <Navbar bg="light" expand="lg" sticky="top">
@@ -68,7 +67,6 @@ function NavBar(props) {
               <BsBag size="25" />
               <Badge variant="danger">{props.productCount}</Badge>
             </Button>
-
             <ItemBag mystate={hideclicked} state={show} />
           </Col>
         </Row>
