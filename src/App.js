@@ -5,18 +5,23 @@ export const ProductsContext = react.createContext();
 
 function App() {
   const [productCount, setProductCount] = useState(0);
-  function myProductCount() {
+  const [itemsBag] = useState([]);
+  function myProductCount(e,products) {
     setProductCount(productCount + 1);
-    console.log(productCount);
+    itemsBag.push(products)
+   
   }
   return (
     <div className="App ">
-      <ProductsContext.Provider value={"black"}>
+       <ProductsContext.Provider value={itemsBag}>
         <NavBar productCount={productCount} />
+        </ProductsContext.Provider>
         <ProductsLayout addProductCount={myProductCount} />
-      </ProductsContext.Provider>
+      
+     
     </div>
   );
 }
+
 
 export default App;
