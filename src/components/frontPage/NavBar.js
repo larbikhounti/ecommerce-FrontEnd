@@ -7,9 +7,20 @@ import {
   Nav,
   Button,
   Badge,
+  InputGroup,
+  FormControl,
 } from "react-bootstrap";
+import ItemBag from "./ItemsBag";
+import { useState } from "react";
 import { BsBag } from "react-icons/bs";
-function NavBar() {
+
+function NavBar(props) {
+  const [show, setShow] = useState(false);
+
+  function hideclicked() {
+    setShow(!show);
+    console.log(show + " state close");
+  }
   return (
     <div className="NavBar">
       <header>
@@ -17,12 +28,14 @@ function NavBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+
           <Container>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Row className="w-100">
-              <Col md={10} sm={6} className="container">
+              <Col md={8} sm={6} className="container">
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="mr-auto">
-                    <Nav.Link href="#home">les nouveaux </Nav.Link>
+                    {/*<Nav.Link href="#home">les nouveaux </Nav.Link>*/}
                     <NavDropdown title="Apparel" id="basic-nav-dropdown">
                       <NavDropdown.Item href="#action/3.1">
                         Action
@@ -56,11 +69,13 @@ function NavBar() {
                   </Nav>
                 </Navbar.Collapse>
               </Col>
-              <Col md={2} sm={6}>
-                <Button variant="light">
+              <Col md={4} sm={6}>
+                <Button variant="light" onClick={() => setShow(!show)}>
                   <BsBag size="25" />
-                  <Badge variant="danger">5</Badge>
+                  <Badge variant="danger">{props.productCount}</Badge>
                 </Button>
+
+                <ItemBag mystate={hideclicked} state={show} />
               </Col>
             </Row>
           </Container>

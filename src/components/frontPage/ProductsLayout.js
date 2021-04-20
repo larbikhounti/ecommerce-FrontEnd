@@ -1,5 +1,7 @@
 import { Container, Col, Row, Button, Card } from "react-bootstrap";
-function ProductsLayout() {
+
+
+function ProductsLayout(props) {
   return (
     <Container className="ProductsLayout mt-5">
       <Row className="ProductsList">
@@ -12,7 +14,7 @@ function ProductsLayout() {
             <Card.Body>
               <Card.Title>Classic Logo Beanie</Card.Title>
               <Card.Text>$19.95</Card.Text>
-              <Button variant="warning">Add to Card</Button>
+              <Button variant="warning" onClick={props.addProductCount}>Add to Card</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -25,7 +27,7 @@ function ProductsLayout() {
             <Card.Body>
               <Card.Title>Classic Logo Tee - Yellow</Card.Title>
               <Card.Text>$29.95</Card.Text>
-              <Button variant="warning">Add to Card</Button>
+              <Button variant="warning" onClick={props.addProductCount}>Add to Card</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -38,7 +40,7 @@ function ProductsLayout() {
             <Card.Body>
               <Card.Title>Classic Logo Toddler Tee</Card.Title>
               <Card.Text>$24.95</Card.Text>
-              <Button variant="warning">Add to Card</Button>
+              <Button variant="warning" onClick={props.addProductCount}>Add to Card</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -51,7 +53,7 @@ function ProductsLayout() {
             <Card.Body>
               <Card.Title>Classic Logo Hoodie</Card.Title>
               <Card.Text>$24.95</Card.Text>
-              <Button variant="warning">Add to Card</Button>
+              <Button variant="warning" onClick={props.addProductCount}>Add to Card</Button>
             </Card.Body>
           </Card>
         </Col>
