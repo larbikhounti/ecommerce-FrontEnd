@@ -7,7 +7,7 @@ import {
   Row,
   Container,
 } from "react-bootstrap";
-import 'react-perfect-scrollbar/dist/css/styles.css';
+
 import Cookies from 'universal-cookie';
 function ItemBag(props) {
   const cookies = new Cookies();
