@@ -13,7 +13,7 @@ function ItemInfo() {
   let [size,setSize] = useState("#")
   if (cookies.get("myBag") === undefined) {
     cookies.set("myBag", [], { path: "/" });
-    console.log("okk");
+   
   }
   let { slug } = useParams();
   function AddToBasketClicked(e) {
@@ -23,7 +23,6 @@ function ItemInfo() {
       product.quantity = quantity;
       product.color = color;
       product.size = size;
-      console.log(product);
       saveToStorage(product, cookies);
       myProductCount()
     }
@@ -154,7 +153,6 @@ function ItemInfo() {
                       <option>#</option>
                       <option>black</option>
                       <option>blue</option>
-                      <option>yellow</option>
                       <option>green</option>
                       <option>red</option>
                     </Form.Control><br/>
@@ -207,10 +205,9 @@ function ItemInfo() {
 }
 function saveToStorage(product, cookies) {
   let correntBag = cookies.get("myBag");
-  
   correntBag.push(product);
   cookies.set("myBag", correntBag, { path: "/" });
-  
+  cookies.set("productCount", correntBag.length, { path: "/" });
 }
 
 export default ItemInfo;

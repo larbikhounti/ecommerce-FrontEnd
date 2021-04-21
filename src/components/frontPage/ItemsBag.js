@@ -15,7 +15,7 @@ function ItemBag(props) {
   let setHideToFalse = props.mystate;
   let items = cookies.get("myBag")
  // get total of  price
- if(items.length != 0){
+ if(items.length !== 0){
   let totalPrice = items.map(elem =>elem.price * elem.quantity).reduce((acc,prc)=> acc +prc).toFixed(2)
   total= totalPrice
  }
@@ -65,7 +65,7 @@ function ItemBag(props) {
                             <h5>size: <b>{item.size}</b></h5>
                           </div>
                           <div className="product-color">
-                            <h5>color:<b>{item.color}</b></h5>
+                            <h5>color: <b>{item.color}</b></h5>
                           </div>
                         </Col>
                       </Row>

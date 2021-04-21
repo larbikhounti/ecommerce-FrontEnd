@@ -9,12 +9,15 @@ import Cookies from 'universal-cookie';
  
 function App() {
   const cookies = new Cookies();
+  if (cookies.get("myBag") === undefined) {
+    cookies.set("myBag", [], { path: "/" });
+   
+  }
+  
   const [productCount, setProductCount] = useState(0);
   const [itemsBag] = useState([]);
   function myProductCount() {
-    setProductCount(productCount + 1);
-    cookies.set("productCount",productCount+1, { path: '/' })
-
+    setProductCount(productCount + cookies.get("productCount"));
   }
   
   return (
