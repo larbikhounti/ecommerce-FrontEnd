@@ -125,15 +125,23 @@ function ItemInfo() {
                   <h1>{product.title}</h1>
                   <h5>${product.price}</h5>
                   <Form.Group className="mt-5" controlId="formBasicInfo">
-                    <Form.Label>Quantity</Form.Label>
+                   
+                        <Form.Label>Quantity</Form.Label>
+                    <br />
                     <Form.Control
-                      pattern="^[1-9]+"
-                      className="w-25 quantity"
-                      type="number"
-                      name="zip"
+                      className="w-25 "
+                      as="select"
+                      size="md"
+                      custom
                       onChange={setMyQuantity}
-                      defaultValue={1}
-                    />
+                    >
+                      <option>1 </option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                    </Form.Control><br/>
                     <Form.Label>Color</Form.Label>
                     <br />
                     <Form.Control
