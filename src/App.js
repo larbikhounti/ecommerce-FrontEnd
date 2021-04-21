@@ -3,21 +3,20 @@ import NavBar from "./components/frontPage/NavBar";
 import react, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ItemInfo from "./components/item/ItemInfo";
+import Cookies from 'universal-cookie';
  export const ProductsContext = react.createContext();
  export const AddToBasket = react.createContext();
  
 function App() {
+  const cookies = new Cookies();
   const [productCount, setProductCount] = useState(0);
   const [itemsBag] = useState([]);
-  const [itemsInfo,setItemInfo] = useState({});
-  function myProductCount(CurrentProduct) {
+  function myProductCount() {
     setProductCount(productCount + 1);
-    itemsBag.push(CurrentProduct);
-    console.log(itemsBag)
+    cookies.set("productCount",productCount+1, { path: '/' })
+
   }
-  function saveProduct(product) {
-    setItemInfo(product)
-  }
+  
   return (
     <Router>
       <div className="App ">
@@ -26,14 +25,14 @@ function App() {
         </ProductsContext.Provider>
 
         <Switch>
-          <Route path="/item/:id">
-          <AddToBasket.Provider value={{myProductCount,itemsInfo}}>
+          <Route path="/item/:slug">
+          <AddToBasket.Provider value={{myProductCount}}>
             <ItemInfo/>
             </AddToBasket.Provider>
           </Route>
           <Route path="/users"></Route>
           <Route path="/">
-            <ProductsLayout addProductCount={saveProduct} />
+            <ProductsLayout/>
           </Route>
         </Switch>
       </div>

@@ -1,8 +1,10 @@
 import { Container, Col, Row, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
 function ProductsLayout(props) {
   let products = [
     {
+      slug: "classic-logo-leanie",
       id: 0,
       title: "Classic Logo Beanie",
       price: 19.95,
@@ -39,10 +41,7 @@ function ProductsLayout(props) {
     },
   ];
 
-  function myOnClick(e) {
-    let index = e.target.getAttribute("index");
-    props.addProductCount(products[index]);
-  }
+  
   return (
     <Container className="ProductsLayout mt-5">
       <Row className="ProductsList">
@@ -50,12 +49,13 @@ function ProductsLayout(props) {
           return (
             <Col md={3} key={element.id}>
               <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={element.imageUrl} />
+               <Card.Img variant="top" src={element.imageUrl} />
+              
                 <Card.Body>
                   <Card.Title>{element.title}</Card.Title>
                   <Card.Text>${element.price}</Card.Text>
-                  <Link to={"/item/" + element.id}>
-                    <Button variant="warning" onClick={myOnClick} index={index}>
+                  <Link to={"/item/" + element.slug}>
+                    <Button variant="warning" >
                       More Details
                     </Button>
                   </Link>

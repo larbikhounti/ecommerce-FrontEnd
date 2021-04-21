@@ -3,15 +3,22 @@ import {
   Modal,
   Table,
   Image,
+  Col,
+  Row,
+  Container,
 } from "react-bootstrap";
- import {ProductsContext} from "../../App";
- import { useContext } from "react";
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import Cookies from 'universal-cookie';
 function ItemBag(props) {
+  const cookies = new Cookies();
   let setHideToFalse = props.mystate;
-  let items = useContext(ProductsContext)
-  console.log(items)
+  let items = cookies.get("myBag")
+ // console.log(items);
   return (
-    <div>
+    <div >
+      <Container>
+
       <Modal
         show={props.state}
         onHide={setHideToFalse}
@@ -25,43 +32,43 @@ function ItemBag(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-         
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>code</th>
-                  <th>image</th>
-                  <th>title</th>
-                  <th>price</th>
-                  <th>quantity</th>
-                </tr>
-              </thead>
+          <Container>
+          <PerfectScrollbar>
+            {items != null
+              ? items.length > 0
+                ? items.map((item) => {
+                    return (
 
-              <tbody>
-                {items != null?
-                items.length > 0
-                  ? items.map((item) => {
-                      return (
-                        <tr key={item.id}>
-                          <td>{item.id}</td>
-                          <td>
-                            <Image src={item.imageUrl} width="80px" rounded />
-                          </td>
-                          <td>{item.title}</td>
-                          <td>{item.price}</td>
-                          <td>
-                            <input type="number" defaultValue={0} />
-                          </td>
-                        </tr>
-                      );
-                    })
-                  : "":""}
-              </tbody>
-            </Table>
-          
+                      <Row key={item.id}>
+                        <Col md={6} sm={6} xs={6}>
+                          <div className="product-image ">
+                            <Image src={item.imageUrl} width="100%" />
+                          </div>
+                        </Col>
+                        <Col md={6} sm={6} xs={6}>
+                          <div className="product-title">
+                            <h3>{item.title}</h3>
+                          </div>
+                          <div className="product-price">
+                            <h5>${item.price}</h5>
+                          </div>
+                          <div className="product-color">
+                            <h5>${item.price}</h5>
+                          </div>
+                          <div className="product-size">
+                            <h5>${item.price}</h5>
+                          </div>
+                        </Col>
+                      </Row>
+                    );
+                  })
+                : ""
+              : ""}
+              </PerfectScrollbar>
+          </Container>
         </Modal.Body>
         <Modal.Footer closeButton>
-          <Table  hover>
+          <Table hover>
             <thead>
               <tr>
                 <th>Shipping</th>
@@ -81,6 +88,7 @@ function ItemBag(props) {
           </Table>
         </Modal.Footer>
       </Modal>
+      </Container>
     </div>
   );
 }

@@ -9,11 +9,13 @@ import {
   Badge,
   FormControl,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ItemBag from "./ItemsBag";
 import { useState } from "react";
 import { BsBag } from "react-icons/bs";
-
+import Cookies from 'universal-cookie';
 function NavBar(props) {
+  const cookies = new Cookies();
   const [show, setShow] = useState(false);
 
   function hideclicked() {
@@ -23,7 +25,7 @@ function NavBar(props) {
     <Navbar bg="light" expand="lg" sticky="top">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Link to='/'><Navbar.Brand >React-Bootstrap</Navbar.Brand></Link>
 
       <Container>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -64,7 +66,7 @@ function NavBar(props) {
           <Col md={4} sm={6}>
             <Button variant="light" onClick={() => setShow(!show)}>
               <BsBag size="25" />
-              <Badge variant="danger">{props.productCount}</Badge>
+              <Badge variant="danger">{cookies.get("productCount")}</Badge>
             </Button>
             <ItemBag mystate={hideclicked} state={show} />
           </Col>
