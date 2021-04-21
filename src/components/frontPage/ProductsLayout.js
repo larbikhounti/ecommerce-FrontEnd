@@ -32,8 +32,7 @@ function ProductsLayout(props) {
       slug: "product4",
       title: "FMDZD_R1 SHOES s468",
       price: 1689.95,
-      imageUrl:
-        "https://static.footshop.com/380935-full_product/60850.jpg",
+      imageUrl: "https://static.footshop.com/380935-full_product/60850.jpg",
     },
     {
       id: 3,
@@ -69,24 +68,23 @@ function ProductsLayout(props) {
     },
   ];
 
-  
   return (
     <Container className="ProductsLayout mt-5 ">
       <Row className="ProductsList">
         {products.map((element, index) => {
           return (
-            <Col md={3} key={element.id} className="text-center">
-              <Card style={{ width: "18rem"}} border="light" >
-               <Card.Img variant="top" src={element.imageUrl} style={{ minHeight:"200px" }} />
-              
-                <Card.Body style={{ Height:"100px" }}>
+            <Col md={3} key={element.id} s className="text-center">
+              <Card style={{ width: "18rem" }} border="light">
+                <Link to={"/item/" + element.slug}>
+                  <Card.Img
+                    variant="top"
+                    src={element.imageUrl}
+                    style={{ minHeight: "200px" }}
+                  />
+                </Link>
+                <Card.Body style={{ Height: "100px" }}>
                   <Card.Title>{element.title}</Card.Title>
                   <Card.Text>${element.price}</Card.Text>
-                  <Link to={"/item/" + element.slug}>
-                    <Button variant="warning" >
-                      More Details
-                    </Button>
-                  </Link>
                 </Card.Body>
               </Card>
             </Col>
