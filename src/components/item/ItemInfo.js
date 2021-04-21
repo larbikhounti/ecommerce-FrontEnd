@@ -1,6 +1,6 @@
-import {useContext} from "react"
+import {useContext,useState} from "react"
 import { useParams } from "react-router-dom";
-import { Col, Row, Container, Image, Form, Button } from "react-bootstrap";
+import { Col, Row, Container, Form, Button } from "react-bootstrap";
 import Cookies from "universal-cookie";
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import { AddToBasket } from "../../App";
@@ -8,20 +8,27 @@ import InnerImageZoom from 'react-inner-image-zoom';
 function ItemInfo() {
   const cookies = new Cookies();
   let {myProductCount} =  useContext(AddToBasket)
+  let [quantity,setQuantity] = useState(1)
   if (cookies.get("myBag") === undefined) {
     cookies.set("myBag", [], { path: "/" });
     console.log("okk");
   }
-
+  let { slug } = useParams();
   function AddToBasketClicked(e) {
-    let product = productInfo.find((x) => x.id === 1);
+    let product = productInfo.find((x) => x.slug === slug);
+    
     if (product !== []) {
+      product.quantity = quantity;
       console.log(product);
       saveToStorage(product, cookies);
       myProductCount()
     }
   }
-  let { slug } = useParams();
+  function setQuanity(e) {
+    console.log(e.target.value);
+    setQuantity(e.target.value)
+  }
+ 
   let productInfo = [
     {
       slug: "product1",
@@ -108,10 +115,11 @@ function ItemInfo() {
                     <Form.Label>Quantity</Form.Label>
                     <Form.Control
                       pattern="^[1-9]+"
-                      className="w-25 text-bolder"
-                      type="text"
+                      className="w-25 quantity"
+                      type="number"
                       name="zip"
-                      defaultValue={1}
+                      onChange={setQuanity}
+                      defaultValue={0}
                     />
                     <Form.Label>Color</Form.Label>
                     <br />
@@ -160,6 +168,7 @@ function ItemInfo() {
 }
 function saveToStorage(product, cookies) {
   let correntBag = cookies.get("myBag");
+  
   correntBag.push(product);
   cookies.set("myBag", correntBag, { path: "/" });
   

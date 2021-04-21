@@ -49,13 +49,16 @@ function ItemBag(props) {
                             <h3>{item.title}</h3>
                           </div>
                           <div className="product-price">
-                            <h5>${item.price}</h5>
+                            <h5>price: ${item.price}</h5>
                           </div>
-                          <div className="product-color">
-                            <h5>${item.price}</h5>
+                          <div className="product-quantity">
+                            <h5>Quantity: {item.quantity}</h5>
                           </div>
                           <div className="product-size">
-                            <h5>${item.price}</h5>
+                            <h5>size: not defined</h5>
+                          </div>
+                          <div className="product-color">
+                            <h5>color: not defined</h5>
                           </div>
                         </Col>
                       </Row>
