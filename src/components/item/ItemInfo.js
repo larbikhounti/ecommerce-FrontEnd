@@ -10,6 +10,7 @@ function ItemInfo() {
   let {myProductCount} =  useContext(AddToBasket)
   let [quantity,setQuantity] = useState(1)
   let [color,setColor] = useState("#")
+  let [size,setSize] = useState("#")
   if (cookies.get("myBag") === undefined) {
     cookies.set("myBag", [], { path: "/" });
     console.log("okk");
@@ -21,6 +22,7 @@ function ItemInfo() {
     if (product !== []) {
       product.quantity = quantity;
       product.color = color;
+      product.size = size;
       console.log(product);
       saveToStorage(product, cookies);
       myProductCount()
@@ -33,6 +35,10 @@ function ItemInfo() {
   function setMyColor(e) {
     console.log(e.target.value);
     setColor(e.target.value)
+  }
+  function setMySize(e) {
+    console.log(e.target.value);
+    setSize(e.target.value)
   }
  
  
@@ -143,6 +149,22 @@ function ItemInfo() {
                       <option>yellow</option>
                       <option>green</option>
                       <option>red</option>
+                    </Form.Control><br/>
+                    <Form.Label>Size</Form.Label>
+                    <br />
+                    <Form.Control
+                      className="w-25 "
+                      as="select"
+                      size="md"
+                      custom
+                      onChange={setMySize}
+                    >
+                      <option>#</option>
+                      <option>s</option>
+                      <option>m</option>
+                      <option>lg</option>
+                      <option>xl</option>
+                      <option>xxl</option>
                     </Form.Control>
                   </Form.Group>
 

@@ -7,13 +7,20 @@ import {
   Row,
   Container,
 } from "react-bootstrap";
-
+import {useState} from "react"
 import Cookies from 'universal-cookie';
 function ItemBag(props) {
+  let [total]= useState(0)
   const cookies = new Cookies();
   let setHideToFalse = props.mystate;
   let items = cookies.get("myBag")
- // console.log(items);
+ // get total of  price
+ if(items){
+  let totalPrice = items.map(elem =>elem.price * elem.quantity).reduce((acc,prc)=> acc +prc).toFixed(2)
+  total= totalPrice
+ }
+
+
   return (
     <div >
       <Container>
@@ -49,16 +56,16 @@ function ItemBag(props) {
                             <h3>{item.title}</h3>
                           </div>
                           <div className="product-price">
-                            <h5>price: ${item.price}</h5>
+                            <h5>price: <b>${item.price}</b></h5>
                           </div>
                           <div className="product-quantity">
-                            <h5>Quantity: {item.quantity}</h5>
+                            <h5>Quantity: <b>{item.quantity}</b></h5>
                           </div>
                           <div className="product-size">
-                            <h5>size: #</h5>
+                            <h5>size: <b>{item.size}</b></h5>
                           </div>
                           <div className="product-color">
-                            <h5>color: {item.color}</h5>
+                            <h5>color:<b>{item.color}</b></h5>
                           </div>
                         </Col>
                       </Row>
@@ -81,7 +88,7 @@ function ItemBag(props) {
             <tbody>
               <tr>
                 <td>free shipping</td>
-                <td>$5150</td>
+                <td>${total}</td>
                 <td>
                   <Button variant="success">Check Out</Button>
                 </td>
