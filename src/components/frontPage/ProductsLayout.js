@@ -1,5 +1,5 @@
 import { Container, Col, Row, Button, Card } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 function ProductsLayout(props) {
   let products = [
     {
@@ -22,31 +22,26 @@ function ProductsLayout(props) {
       price: 19.95,
       imageUrl:
         "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2439_9e5aee1f-6219-40ba-9e79-23075d264034_1800x1800.jpg?v=1609950583",
-    },{ 
-    id: 4,
-    title: "Classic Logo Beanie",
-    price: 19.95,
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2554_1800x1800.jpg?v=1609950571",
-  },{
-    id: 3,
-    title: "Classic Logo Beanie",
-    price: 19.95,
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2439_9e5aee1f-6219-40ba-9e79-23075d264034_1800x1800.jpg?v=1609950583",
-  },
-
+    },
+    {
+      id: 4,
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2554_1800x1800.jpg?v=1609950571",
+    },
+    {
+      id: 3,
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://cdn.shopify.com/s/files/1/1994/5431/products/DSC_2439_9e5aee1f-6219-40ba-9e79-23075d264034_1800x1800.jpg?v=1609950583",
+    },
   ];
-  function saveToLocalStorage(e) {
-    //const myStorage = window.localStorage
-    // let data = JSON.parse(myStorage.getItem("items"));
-    //  data.push(products[index])
-    // myStorage.setItem("items",JSON.stringify(data));
-    // console.log(myStorage.getItem("items"));
-  }
+
   function myOnClick(e) {
     let index = e.target.getAttribute("index");
-    props.addProductCount(e, products[index]);
+    props.addProductCount(products[index]);
   }
   return (
     <Container className="ProductsLayout mt-5">
@@ -58,10 +53,12 @@ function ProductsLayout(props) {
                 <Card.Img variant="top" src={element.imageUrl} />
                 <Card.Body>
                   <Card.Title>{element.title}</Card.Title>
-                    <Card.Text>${element.price}</Card.Text>
-                  <Button variant="warning" onClick={myOnClick} index={index}>
-                    Add to Card
-                  </Button>
+                  <Card.Text>${element.price}</Card.Text>
+                  <Link to={"/item/" + element.id}>
+                    <Button variant="warning" onClick={myOnClick} index={index}>
+                      More Details
+                    </Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>

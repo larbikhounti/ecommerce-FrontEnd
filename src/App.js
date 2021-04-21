@@ -1,27 +1,44 @@
 import ProductsLayout from "./components/frontPage/ProductsLayout";
 import NavBar from "./components/frontPage/NavBar";
 import react, { useState } from "react";
-export const ProductsContext = react.createContext();
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ItemInfo from "./components/item/ItemInfo";
+ export const ProductsContext = react.createContext();
+ export const AddToBasket = react.createContext();
+ 
 function App() {
   const [productCount, setProductCount] = useState(0);
   const [itemsBag] = useState([]);
-  function myProductCount(e,products) {
+  const [itemsInfo,setItemInfo] = useState({});
+  function myProductCount(CurrentProduct) {
     setProductCount(productCount + 1);
-    itemsBag.push(products)
-   
+    itemsBag.push(CurrentProduct);
+    console.log(itemsBag)
+  }
+  function saveProduct(product) {
+    setItemInfo(product)
   }
   return (
-    <div className="App ">
-       <ProductsContext.Provider value={itemsBag}>
-        <NavBar productCount={productCount} />
+    <Router>
+      <div className="App ">
+        <ProductsContext.Provider value={itemsBag}>
+          <NavBar productCount={productCount} />
         </ProductsContext.Provider>
-        <ProductsLayout addProductCount={myProductCount} />
-      
-     
-    </div>
+
+        <Switch>
+          <Route path="/item/:id">
+          <AddToBasket.Provider value={{myProductCount,itemsInfo}}>
+            <ItemInfo/>
+            </AddToBasket.Provider>
+          </Route>
+          <Route path="/users"></Route>
+          <Route path="/">
+            <ProductsLayout addProductCount={saveProduct} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
 
 export default App;

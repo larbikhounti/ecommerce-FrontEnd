@@ -7,7 +7,6 @@ import {
   Nav,
   Button,
   Badge,
-  InputGroup,
   FormControl,
 } from "react-bootstrap";
 import ItemBag from "./ItemsBag";
