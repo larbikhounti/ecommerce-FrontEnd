@@ -8,7 +8,6 @@ import {
   Container,
 } from "react-bootstrap";
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import PerfectScrollbar from 'react-perfect-scrollbar'
 import Cookies from 'universal-cookie';
 function ItemBag(props) {
   const cookies = new Cookies();
@@ -33,7 +32,7 @@ function ItemBag(props) {
         </Modal.Header>
         <Modal.Body>
           <Container>
-          <PerfectScrollbar>
+         
             {items != null
               ? items.length > 0
                 ? items.map((item) => {
@@ -64,7 +63,7 @@ function ItemBag(props) {
                   })
                 : ""
               : ""}
-              </PerfectScrollbar>
+              
           </Container>
         </Modal.Body>
         <Modal.Footer closeButton>

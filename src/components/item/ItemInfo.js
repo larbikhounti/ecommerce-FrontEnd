@@ -24,12 +24,68 @@ function ItemInfo() {
   let { slug } = useParams();
   let productInfo = [
     {
-      slug: "classic-logo-leanie",
-      id: 1,
+      slug: "product1",
+      id: 0,
       title: "Classic Logo Beanie",
+      price: 19.95,
       imageUrl:
-        "https://footwearnews.com/wp-content/uploads/2019/11/jordan-melo-m12-555088_062_a_prem-e1575044740922.jpg",
-      price: 99.99,
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/bc144ab56823419ca8f5abd60136d3ff_9366/NMD_R1_Shoes_Black_FV9153_01_standard.jpg",
+    },
+    {
+      id: 1,
+      slug: "product2",
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/178b0dce25ad4f26a04bac0200ac3b99_9366/NMD_R1_Shoes_Black_FY5727_01_standard.jpg",
+    },
+    {
+      id: 3,
+      title: "Classic Logo Beanie",
+      slug: "product3",
+      price: 19.95,
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/431917d3efdb46f0b72cac7c00b20241_9366/NMD_R1_Shoes_White_G55576_01_standard.jpg",
+    },
+    {
+      id: 4,
+      slug: "product4",
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://static.footshop.com/380935-full_product/60850.jpg",
+    },
+    {
+      id: 3,
+      slug: "product5",
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/0b49803254284e418fccaaf00111954c_9366/NMD_R1_Shoes_Black_FV9015_01_standard.jpg",
+    },
+    {
+      id: 3,
+      slug: "product6",
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://assets.adidas.com/images/w_600,f_auto,q_auto:sensitive,fl_lossy/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg",
+    },
+    {
+      id: 3,
+      slug: "product7",
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/38277b478a79419abf6da998000ab640_9366/Runfalcon_Shoes_Black_F36218_01_standard.jpg",
+    },
+    {
+      id: 3,
+      slug: "product8",
+      title: "Classic Logo Beanie",
+      price: 19.95,
+      imageUrl:
+        "https://assets.adidas.com/images/w_600,f_auto,q_auto/15f901c90a9549d29104aae700d27efb_9366/Superstar_Shoes_Black_EG4959_01_standard.jpg",
     },
   ];
   //console.log(id);
