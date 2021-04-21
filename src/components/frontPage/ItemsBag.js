@@ -4,12 +4,12 @@ import {
   Table,
   Image,
 } from "react-bootstrap";
- import ProductsContext from "../../App";
+ import {ProductsContext} from "../../App";
  import { useContext } from "react";
 function ItemBag(props) {
   let setHideToFalse = props.mystate;
   let items = useContext(ProductsContext)
-  
+  console.log(items)
   return (
     <div>
       <Modal
