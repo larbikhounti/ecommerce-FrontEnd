@@ -55,10 +55,10 @@ function ItemBag(props) {
                             <h5>Quantity: {item.quantity}</h5>
                           </div>
                           <div className="product-size">
-                            <h5>size: not defined</h5>
+                            <h5>size: #</h5>
                           </div>
                           <div className="product-color">
-                            <h5>color: not defined</h5>
+                            <h5>color: {item.color}</h5>
                           </div>
                         </Col>
                       </Row>

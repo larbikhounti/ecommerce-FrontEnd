@@ -9,6 +9,7 @@ function ItemInfo() {
   const cookies = new Cookies();
   let {myProductCount} =  useContext(AddToBasket)
   let [quantity,setQuantity] = useState(1)
+  let [color,setColor] = useState("#")
   if (cookies.get("myBag") === undefined) {
     cookies.set("myBag", [], { path: "/" });
     console.log("okk");
@@ -19,15 +20,21 @@ function ItemInfo() {
     
     if (product !== []) {
       product.quantity = quantity;
+      product.color = color;
       console.log(product);
       saveToStorage(product, cookies);
       myProductCount()
     }
   }
-  function setQuanity(e) {
+  function setMyQuantity(e) {
     console.log(e.target.value);
     setQuantity(e.target.value)
   }
+  function setMyColor(e) {
+    console.log(e.target.value);
+    setColor(e.target.value)
+  }
+ 
  
   let productInfo = [
     {
@@ -118,8 +125,8 @@ function ItemInfo() {
                       className="w-25 quantity"
                       type="number"
                       name="zip"
-                      onChange={setQuanity}
-                      defaultValue={0}
+                      onChange={setMyQuantity}
+                      defaultValue={1}
                     />
                     <Form.Label>Color</Form.Label>
                     <br />
@@ -128,7 +135,9 @@ function ItemInfo() {
                       as="select"
                       size="md"
                       custom
+                      onChange={setMyColor}
                     >
+                      <option>#</option>
                       <option>black</option>
                       <option>blue</option>
                       <option>yellow</option>
