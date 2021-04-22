@@ -45,66 +45,96 @@ function ItemInfo() {
     {
       slug: "product1",
       id: 0,
-      title: "Classic Logo Beanie",
-      price: 19.95,
+      title: "NMD_R1 SHOES",
+     
+      categories:["shoes","newarrivals","women"],
+      price: 195.95,
       imageUrl:
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/bc144ab56823419ca8f5abd60136d3ff_9366/NMD_R1_Shoes_Black_FV9153_01_standard.jpg",
+        "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy/9c8c09c992ae488a94b1ac92009bbf49_9366/ultraboost-21-shoes.jpg",
     },
     {
       id: 1,
       slug: "product2",
-      title: "Classic Logo Beanie",
-      price: 19.95,
+      title: "NMD_R545 SHOES",
+      price: 1249.95,
+      
+      categories:["shoes","newarrivals","women"],
       imageUrl:
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/178b0dce25ad4f26a04bac0200ac3b99_9366/NMD_R1_Shoes_Black_FY5727_01_standard.jpg",
+        "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy/9061a7718c7843668f17ac8a006c6b22_9366/ultraboost-21-shoes.jpg",
     },
     {
-      id: 3,
-      title: "Classic Logo Beanie",
+      id: 2,
+      title: "NMD_R1 SHOES s4 ",
       slug: "product3",
-      price: 19.95,
+     
+      categories:["shoes","newarrivals","men"],
+      price: 1789.95,
+      
       imageUrl:
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/431917d3efdb46f0b72cac7c00b20241_9366/NMD_R1_Shoes_White_G55576_01_standard.jpg",
     },
     {
-      id: 4,
+      id: 3,
       slug: "product4",
-      title: "Classic Logo Beanie",
-      price: 19.95,
-      imageUrl:
-        "https://static.footshop.com/380935-full_product/60850.jpg",
+      title: "FMDZD_R1 SHOES s468",
+      price: 1689.95,
+      
+      categories:["shoes","newarrivals","women"],
+      imageUrl: "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy/3c7a5a1783ac4716ac82ac7900c4b56c_9366/ultraboost-5.0-dna-shoes.jpg",
     },
     {
-      id: 3,
+      id: 4,
       slug: "product5",
-      title: "Classic Logo Beanie",
-      price: 19.95,
+      title: "EMD_R1f5 SHOES s4",
+      categories:["shoes","newarrivals"],
+      price: 1789.95,
       imageUrl:
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/0b49803254284e418fccaaf00111954c_9366/NMD_R1_Shoes_Black_FV9015_01_standard.jpg",
     },
     {
-      id: 3,
+      id: 5,
       slug: "product6",
-      title: "Classic Logo Beanie",
-      price: 19.95,
+      title: "GElassic Logo Beanie",
+      price: 1569.95,
+      categories:["shoes","newarrivals"],
       imageUrl:
         "https://assets.adidas.com/images/w_600,f_auto,q_auto:sensitive,fl_lossy/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg",
     },
     {
-      id: 3,
+      id: 6,
       slug: "product7",
       title: "Classic Logo Beanie",
-      price: 19.95,
+      price: 42.95,
+      categories:["shoes","newarrivals"],
       imageUrl:
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/38277b478a79419abf6da998000ab640_9366/Runfalcon_Shoes_Black_F36218_01_standard.jpg",
     },
     {
-      id: 3,
+      id: 7,
       slug: "product8",
       title: "Classic Logo Beanie",
-      price: 19.95,
+      price: 1549.95,
+      categories:["shoes","newarrivals"],
       imageUrl:
         "https://assets.adidas.com/images/w_600,f_auto,q_auto/15f901c90a9549d29104aae700d27efb_9366/Superstar_Shoes_Black_EG4959_01_standard.jpg",
+    },
+    {
+      id: 8,
+      slug: "product9",
+      title: "Classic Logo Beanie",
+      price: 1549.95,
+      categories:["shoes","newarrivals","women"],
+      imageUrl:
+        "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy/acddb039823945e0a4b9acb000e4108b_9366/ultraboost-21-shoes.jpg",
+    },
+    {
+      id: 9,
+      slug: "product10",
+      title: "Classic Logo Beanie",
+      price: 1549.95,
+      categories:["shoes","newarrivals","women"],
+      imageUrl:
+        "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy/88608e80bcf9413ebe39ac6f01271c8d_9366/sl-andridge-shoes.jpg",
     },
   ];
   //console.log(id);

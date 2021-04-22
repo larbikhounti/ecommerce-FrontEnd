@@ -90,7 +90,7 @@ function ProductsLayout(props) {
     },
     {
       id: 8,
-      slug: "product8",
+      slug: "product9",
       title: "Classic Logo Beanie",
       price: 1549.95,
       categories:["shoes","newarrivals","women"],
@@ -99,7 +99,7 @@ function ProductsLayout(props) {
     },
     {
       id: 9,
-      slug: "product8",
+      slug: "product10",
       title: "Classic Logo Beanie",
       price: 1549.95,
       categories:["shoes","newarrivals","women"],
