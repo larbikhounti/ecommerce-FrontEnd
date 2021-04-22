@@ -73,8 +73,8 @@ function ProductsLayout(props) {
       <Row className="ProductsList">
         {products.map((element, index) => {
           return (
-            <Col md={3} key={element.id} s className="text-center">
-              <Card style={{ width: "18rem" }} border="light">
+            <Col md={3} key={element.id}  className="text-center mt-4">
+              <Card style={{ width: "100%" }} border="light">
                 <Link to={"/item/" + element.slug}>
                   <Card.Img
                     variant="top"
@@ -86,6 +86,7 @@ function ProductsLayout(props) {
                   <Card.Title>{element.title}</Card.Title>
                   <Card.Text>${element.price}</Card.Text>
                 </Card.Body>
+                <Button variant="light" style={{border:"1px solid black"}} ><Link style={{  textDecoration: "none",color: 'black'  }} to={"/item/" + element.slug}>More Info</Link></Button>
               </Card>
             </Col>
           );

@@ -121,7 +121,7 @@ function ItemInfo() {
               </Col>
               <Col md={6}>
                 <Form>
-                  <h1>{product.title}</h1>
+                  <h3>{product.title}</h3>
                   <h5>${product.price}</h5>
                   <Form.Group className="mt-5" controlId="formBasicInfo">
                    

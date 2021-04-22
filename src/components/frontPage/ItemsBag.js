@@ -44,8 +44,9 @@ function ItemBag(props) {
               ? items.length > 0
                 ? items.map((item) => {
                     return (
-
+                      
                       <Row key={item.id}>
+                        <hr />
                         <Col md={6} sm={6} xs={6}>
                           <div className="product-image ">
                             <Image src={item.imageUrl} width="100%" />
@@ -53,7 +54,7 @@ function ItemBag(props) {
                         </Col>
                         <Col md={6} sm={6} xs={6}>
                           <div className="product-title">
-                            <h3>{item.title}</h3>
+                            <h4>{item.title}</h4>
                           </div>
                           <div className="product-price">
                             <h5>price: <b>${item.price}</b></h5>
