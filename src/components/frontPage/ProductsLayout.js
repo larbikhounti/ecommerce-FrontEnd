@@ -92,10 +92,12 @@ function ProductsLayout(props) {
   let [products] = useState(productsList)
  
   
-
-  let data =  productsList.map(el => el).filter(el=> el.categories.includes(category))
-  //console.log(data)
-  products = data
+  if(category !== undefined){
+    let data =  productsList.map(el => el).filter(el=> el.categories.includes(category))
+    //console.log(data)
+    products = data
+  }
+ 
 
   return (
     <Container className="ProductsLayout mt-5 ">
