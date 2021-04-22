@@ -25,7 +25,7 @@ function NavBar(props) {
     <Navbar bg="light" expand="lg" sticky="top">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-      <Link to='/'><Navbar.Brand >React-Bootstrap</Navbar.Brand></Link>
+      <Link to='/all'><Navbar.Brand >React-Bootstrap</Navbar.Brand></Link>
 
       <Container>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />

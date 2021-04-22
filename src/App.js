@@ -34,7 +34,7 @@ function App() {
             </AddToBasket.Provider>
           </Route>
           <Route path="/users"></Route>
-          <Route path="/">
+          <Route path="/:category?">
             <ProductsLayout/>
           </Route>
         </Switch>

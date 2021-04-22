@@ -124,8 +124,7 @@ function ItemInfo() {
                   <h3>{product.title}</h3>
                   <h5>${product.price}</h5>
                   <Form.Group className="mt-5" controlId="formBasicInfo">
-                   
-                        <Form.Label>Quantity</Form.Label>
+                   <Form.Label>Quantity</Form.Label>
                     <br />
                     <Form.Control
                       className="w-25 "
