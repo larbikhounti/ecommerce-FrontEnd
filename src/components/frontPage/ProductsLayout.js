@@ -106,6 +106,33 @@ function ProductsLayout(props) {
       imageUrl:
         "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy/88608e80bcf9413ebe39ac6f01271c8d_9366/sl-andridge-shoes.jpg",
     },
+    {
+      id: 10,
+      slug: "product11",
+      title: "TENNIS LUXE POLO SHIRT",
+      price: 1549.95,
+      categories:["shoes","newarrivals","women","top"],
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/4da715e4cd364c80a084acd700f4b0bb_9366/Tennis_Luxe_Polo_Shirt_Blue_H56471_21_model.jpg",
+    },
+    {
+      id: 11,
+      slug: "product12",
+      title: "TENNIS LUXE POLO SHIRT",
+      price: 40,
+      categories:["shoes","newarrivals","women","top"],
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/f447eb65ca9e4c43ad9facd700f42548_9366/Tennis_Luxe_Polo_Shirt_Yellow_H56469_21_model.jpg",
+    },
+    {
+      id: 12,
+      slug: "product13",
+      title: "TENNIS LUXE POLO SHIRT",
+      price: 40,
+      categories:["shoes","newarrivals","women","top"],
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/a4585753f21f409f8dc2ac7500e483d2_9366/LOUNGEWEAR_Adicolor_Essentials_Tee_Pink_H13877_21_model.jpg",
+    },
   ];
   let [products] = useState(productsList)
   products = productsList
