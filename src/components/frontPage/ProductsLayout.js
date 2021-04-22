@@ -153,7 +153,7 @@ function ProductsLayout(props) {
 
       </ButtonGroup>
       <br />
-      <Container>
+      <Container className="mt-3">
        {loadSubCategory(category)}
       </Container>
 
@@ -200,19 +200,19 @@ function ProductsLayout(props) {
 function loadSubCategory(param) {
   if(param){
     return (<div>
-        <Button variant="white" className="ml-1 ">
+        <Button variant="white" className="ml-1 border ">
     SHOES
     </Button>
-    <Button variant="white" className="ml-1 ">
+    <Button variant="white" className="ml-1 border">
     TOPS
     </Button>
-    <Button variant="white" className="ml-1 ">
+    <Button variant="white" className="ml-1 border">
     PANTS AND TIGHTS
     </Button>
-    <Button variant="white" className="ml-1 ">
+    <Button variant="white" className="ml-1 border">
     NEW ARRIVALS
     </Button>
-    <Button variant="white" className="ml-1 ">
+    <Button variant="white" className="ml-1 border">
     TOPS
     </Button>
     </div>)
