@@ -41,13 +41,13 @@ function ItemInfo() {
   }
  
  
-  let productInfo =  [
+  let productInfo = [
     {
       slug: "product1",
       id: 0,
       title: "NMD_R1 SHOES",
      
-      categories:["shoes","newarrivals","women"],
+      categories:["shoes","newarrivals","women","new arrivals"],
       price: 195.95,
       imageUrl:
         "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy/9c8c09c992ae488a94b1ac92009bbf49_9366/ultraboost-21-shoes.jpg",
@@ -141,7 +141,7 @@ function ItemInfo() {
       slug: "product11",
       title: "TENNIS LUXE POLO SHIRT",
       price: 1549.95,
-      categories:["shoes","newarrivals","women","top"],
+      categories:["shoes","newarrivals","women","tops"],
       imageUrl:
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/4da715e4cd364c80a084acd700f4b0bb_9366/Tennis_Luxe_Polo_Shirt_Blue_H56471_21_model.jpg",
     },
@@ -150,7 +150,7 @@ function ItemInfo() {
       slug: "product12",
       title: "TENNIS LUXE POLO SHIRT",
       price: 40,
-      categories:["shoes","newarrivals","women","top"],
+      categories:["shoes","newarrivals","women","tops"],
       imageUrl:
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/f447eb65ca9e4c43ad9facd700f42548_9366/Tennis_Luxe_Polo_Shirt_Yellow_H56469_21_model.jpg",
     },
@@ -159,9 +159,27 @@ function ItemInfo() {
       slug: "product13",
       title: "TENNIS LUXE POLO SHIRT",
       price: 40,
-      categories:["shoes","newarrivals","women","top"],
+      categories:["shoes","newarrivals","women","tops"],
       imageUrl:
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/a4585753f21f409f8dc2ac7500e483d2_9366/LOUNGEWEAR_Adicolor_Essentials_Tee_Pink_H13877_21_model.jpg",
+    },
+    {
+      id: 13,
+      slug: "product14",
+      title: "TIRO TRACK PANTS",
+      price: 40,
+      categories:["pants and tights","newarrivals","women",],
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/c4197b5e74b8415eb319ac9801250dc5_9366/Tiro_Track_Pants_Black_GN5492_21_model.jpg",
+    },
+    {
+      id: 14,
+      slug: "product15",
+      title: "TIRO TRACK PANTS",
+      price: 45,
+      categories:["pants and tights","newarrivals","women",],
+      imageUrl:
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/c36745ebf54840f1be6dacbd00eb9a19_9366/Tiro_Track_Pants_White_GN5493_21_model.jpg",
     },
   ];
   //console.log(id);
