@@ -213,18 +213,21 @@ function ProductsLayout(props) {
                   <Card.Body style={{ Height: "100px" }}>
                     <Card.Title>{element.title}</Card.Title>
                     <Card.Text>${element.price}</Card.Text>
-                  </Card.Body>
-                  <Button
-                    variant="light"
-                    style={{ border: "1px solid black", color: "#fffff" }}
-                  >
-                    <Link
-                      style={{ textDecoration: "none", color: "black" }}
+                  </Card.Body >
+                  <Link
+                    
+                      style={{ textDecoration: "none", color: "black"}}
                       to={"/item/" + element.slug}
                     >
+                  <Button
+                    variant="light"
+                    style={{ border: "1px solid black", color: "#fffff",width:"100%" }}
+                  >
+                    
                       More Info
-                    </Link>
+                  
                   </Button>
+                  </Link>
                 </Card>
               </Col>
             );
