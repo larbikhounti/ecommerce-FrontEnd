@@ -9,8 +9,10 @@ import {
 } from "react-bootstrap";
 import {useState} from "react"
 import Cookies from 'universal-cookie';
+
 function ItemBag(props) {
   let [total]= useState(0)
+  let [rerender,setRenrander]= useState(true)
   const cookies = new Cookies();
   let setHideToFalse = props.mystate;
   let items = cookies.get("myBag")
@@ -19,6 +21,17 @@ function ItemBag(props) {
   let totalPrice = items.map(elem =>elem.price * elem.quantity).reduce((acc,prc)=> acc +prc).toFixed(2)
   total= totalPrice
  }
+
+ function removeButtonClicked(e) {
+  removeFromBag(e.target.getAttribute("index"))
+ }
+ function removeFromBag(index) {
+  items.splice(index,1)
+  cookies.set("myBag",items)
+  cookies.set("productCount",items.length)
+  setRenrander(!rerender)
+
+}
 
 
   return (
@@ -42,10 +55,10 @@ function ItemBag(props) {
          
             {items != null
               ? items.length > 0
-                ? items.map((item) => {
+                ? items.map((item,index) => {
                     return (
                       
-                      <Row key={item.id}>
+                      <Row key={index}>
                         <hr />
                         <Col md={6} sm={6} xs={6}>
                           <div className="product-image ">
@@ -68,7 +81,9 @@ function ItemBag(props) {
                           <div className="product-color">
                             <h5>color: <b>{item.color}</b></h5>
                           </div>
+                          <Button onClick={removeButtonClicked} index={index} variant="light" className="border ">remove <span className="text-danger">X</span></Button>
                         </Col>
+                        
                       </Row>
                     );
                   })
@@ -104,3 +119,4 @@ function ItemBag(props) {
 }
 
 export default ItemBag;
+
