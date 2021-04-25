@@ -1,42 +1,43 @@
 import { Carousel } from "react-bootstrap";
+import "./item.css"
 function Slider() {
-    return <Carousel fade className="pl-2 pr-2 pt-2 mt-2 ml-5 mr-5 ">
+    return <div className="pl-4 pr-4 pt-2 mt-2 ml-5 mr-5 myslider">
+      <Carousel indicators={false} fade className="">
     <Carousel.Item>
       <img
         className="d-block w-100"
-        src="https://www.sneaker4shoes.com/media/wysiwyg/infortis/slideshow/adidas-banner-1.jpg"
+        src="https://www.portotheme.com/shopify/porto/documentation/assets/images/sections/banner-slider-content.jpg"
         alt="First slide"
       />
       <Carousel.Caption>
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        
+       
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
       <img
         className="d-block w-100"
-        src="https://cooljsonline.com/wp-content/uploads/2018/09/adidas-banner-cooljs.jpg"
+        src="https://www.epcc.co/image/cache/catalog/slider/slider3-sneaker1-1920x685.jpg"
         alt="Second slide"
       />
   
       <Carousel.Caption>
-        <h3 className="text-dark">Second slide label</h3>
-        <p className="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
       <img
         className="d-block w-100"
-        src="https://www.kickz.com/media/images/SEO-LPs/Banner-980x326_AdidasGazelle.jpg"
+        src="https://lh3.googleusercontent.com/L62MWaSKQK4VkgZ4HbBiYTAN_JxQ-4ZQBhOLTDDnKHXxZW4-gZ72KoVeKVGjprSBMOLWyNHLlHg2tlzK7xL5-G3KDQ8=w1000"
         alt="Third slide"
       />
   
       <Carousel.Caption>
-        <h3>Third slide label</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+     
       </Carousel.Caption>
     </Carousel.Item>
   </Carousel>
+      </div>
 }
 export default Slider;
 

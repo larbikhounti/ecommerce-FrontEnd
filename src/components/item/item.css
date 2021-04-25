@@ -1,0 +1,15 @@
+@media (max-width: 800px) {
+    .pl-2{
+        padding-left: 0rem!important;
+        
+    }
+    .ml-5, .mx-5 {
+        margin: 0rem!important;
+    }
+    .pr-2, .px-2 {
+        padding-right: 0rem!important;
+    }
+    .myslider{
+        width: 20rem;
+    }
+  }
