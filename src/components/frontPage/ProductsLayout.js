@@ -226,45 +226,10 @@ function ProductsLayout(props) {
        {loadSubCategory(category,setMyFilterBy)}
       </Container>
 
-      <Row className="ProductsList">
+      <Row className="ProductsList min-vh-100">
         {
-          
-        products.map((element, index) => {
-        
-            return (
-              <Col md={3} key={element.id} className="text-center mt-4">
-                <Card style={{ width: "100%" }} border="light">
-                  <Link to={"/item/" + element.slug}>
-                    <Card.Img
-                      variant="top"
-                      src={element.imageUrl}
-                      style={{ minHeight: "200px" }}
-                    />
-                  </Link>
-                  <Card.Body style={{ Height: "100px" }}>
-                    <Card.Title>{element.title}</Card.Title>
-                    <Card.Text>${element.price}</Card.Text>
-                  </Card.Body >
-                  <Link
-                    
-                      style={{ textDecoration: "none", color: "black"}}
-                      to={"/item/" + element.slug}
-                    >
-                  <Button
-                    variant="light"
-                    style={{ border: "1px solid black", color: "#fffff",width:"100%" }}
-                  >
-                    
-                      More Info
-                  
-                  </Button>
-                  </Link>
-                </Card>
-              </Col>
-            );
-          
-         
-        })}
+            checkIfThereIsProducts(products)
+       }
       </Row>
     </Container>
   );
@@ -291,3 +256,45 @@ function loadSubCategory(param,setFilterBy) {
 }
 
 export default ProductsLayout;
+function checkIfThereIsProducts(products) {
+  if(products !== []){
+          
+   return products.map((element, index) => {
+        
+      return (
+        <Col md={3} key={element.id} className="text-center mt-4">
+          <Card style={{ width: "100%" }} border="light">
+            <Link to={"/item/" + element.slug}>
+              <Card.Img
+                variant="top"
+                src={element.imageUrl}
+                style={{ minHeight: "200px" }}
+              />
+            </Link>
+            <Card.Body style={{ Height: "100px" }}>
+              <Card.Title>{element.title}</Card.Title>
+              <Card.Text>${element.price}</Card.Text>
+            </Card.Body >
+            <Link
+              
+                style={{ textDecoration: "none", color: "black"}}
+                to={"/item/" + element.slug}
+              >
+            <Button
+              variant="light"
+              style={{ border: "1px solid black", color: "#fffff",width:"100%" }}
+            >
+              
+                More Info
+            
+            </Button>
+            </Link>
+          </Card>
+        </Col>
+      );
+    
+   
+  })
+  }
+
+}
