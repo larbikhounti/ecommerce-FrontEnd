@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import ItemInfo from "./components/item/ItemInfo";
 import Cookies from "universal-cookie";
+import  Slider  from "./components/item/Slider";
 export const ProductsContext = react.createContext();
 export const AddToBasket = react.createContext();
 
@@ -39,7 +40,8 @@ function App() {
               <ItemInfo />
             </AddToBasket.Provider>
           </Route>
-          <Route path="/:category?">
+          <Route path="/:category">
+            <Slider/>
             <ProductsLayout />
           </Route>
         </Switch>

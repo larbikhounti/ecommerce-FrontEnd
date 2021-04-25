@@ -16,7 +16,7 @@ function ItemInfo() {
   }
   let { slug } = useParams();
   function AddToBasketClicked(e) {
-    let product = productInfo.find((x) => x.slug === slug);
+    let product = productInfo.find((item) => item.slug === slug);
 
     if (product !== []) {
       product.quantity = quantity;
