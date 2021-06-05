@@ -13,16 +13,38 @@ function ProductsLayout(props) {
   let {category} = useParams("category");
   const [value, setValue] = useState('');
   let [filterBy,setFilterBy] = useState(false);
-  let [products,setPoduct] = useState()
+ 
+  let [products,setPoduct] = useState();
+  let [mycatgory,setmygategory] = useState(['women','men','kids']);
+
+ 
+ 
+ 
 
   useEffect(()=>{
-    axios.get("http://127.0.0.1:8000/api/items").then(res=>{
+    axios.get(`http://localhost:8000/api/items/bycategory/${category}`).then(res=>{
       products = res.data.data
      setPoduct(products)
+    })
+  },[value])
+  
+
+  function getproducts(mycount){
+   // setmygategory(category);
+    console.log("inside get products "+mycatgory[mycount]);
+    axios.get(`http://localhost:8000/api/items/bycategory/${mycatgory[mycount]}`).then(res=>{
+      products = res.data.data
+    // setPoduct(products)
+     console.log(products)
+     setPoduct(products)
+     
+    
      //products = res.data.data
      // console.log(products)
     })
-  },[value])
+    
+   
+  }
 
 
   function setMyFilterBy(params) {
@@ -36,37 +58,54 @@ function ProductsLayout(props) {
   return (
     <Container className="ProductsLayout mt-5 ">
       <ButtonGroup aria-label="Categories ">
-      <Link to="/">
       
-        </Link>
-        <Link to="/women">
+      <Link to="/women">
           <Button
+         onClick={()=>{
+         
+          getproducts(0)
+          
+        }}
             className={
-              category === "women"
+              mycatgory === "women"
                 ? "ml-2 font-weight-bold text-uppercase"
                 : "ml-2  text-uppercase"
             }
             variant="light"
           >
+          
             Women
+           
           </Button>
-        </Link>
-        <Link to="/men">
+          </Link>
+          <Link to="/men">
           <Button
+             onClick={()=>{
+             
+              getproducts(1)
+             
+            }}
             className={
-              category === "men"
+              mycatgory === "men"
                 ? "ml-2 font-weight-bold text-uppercase"
                 : "ml-2  text-uppercase"
             }
             variant="light"
           >
+            
             Men
+           
           </Button>
-        </Link>
+          </Link>
         <Link to="/kids">
           <Button
+           onClick={()=>{
+             
+            getproducts(3)
+           
+          }}
             className={
-              category === "kids"
+              mycatgory === "kids"
                 ? "ml-2 font-weight-bold text-uppercase"
                 : "ml-2  text-uppercase"
             }
@@ -79,11 +118,12 @@ function ProductsLayout(props) {
       </ButtonGroup>
       <br />
       <Container className="mt-3">
-       {loadSubCategory(category,setMyFilterBy)}
+       {loadSubCategory(mycatgory,setMyFilterBy)}
       </Container>
 
       <Row className="ProductsList min-vh-100">
         {
+
           checkIfThereIsProducts(products)
         
             
@@ -116,7 +156,7 @@ function loadSubCategory(param,setFilterBy) {
 export default ProductsLayout;
 function checkIfThereIsProducts(products) {
   if(products !== undefined){  
-    console.log(products)      
+        
    return products.map((element, index) => {
       return (
         <Col md={3} key={element.id} className="text-center mt-4">
