@@ -13,10 +13,13 @@ import ItemBag from "./ItemsBag";
 import { useState } from "react";
 import { BsBag } from "react-icons/bs";
 import Cookies from 'universal-cookie';
+
 function NavBar(props) {
   const cookies = new Cookies();
   const [show, setShow] = useState(false);
-
+ 
+  
+ 
   function hideclicked() {
     setShow(!show);
   }
@@ -27,7 +30,7 @@ function NavBar(props) {
       <Link to='/'><Navbar.Brand >Khounti Shop</Navbar.Brand></Link>
 
       <Container>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <FormControl type="text" placeholder="Search" className="mr-sm-2"  onChange={props.search}/>
         <Row className="w-100">
           <Col md={8} sm={6} className="container">
             <Navbar.Collapse id="basic-navbar-nav">

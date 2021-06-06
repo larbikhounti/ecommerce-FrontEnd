@@ -12,12 +12,13 @@ import {useState,useEffect} from "react";
 import ListProducts from "./ListProducts";
 import SubCategories from "./SubCategories";
 function ProductsLayout(props) {
+
   let {category} = useParams("category");
   const [value, setValue] = useState(false);
   let [filterBy,setFilterBy] = useState(false);
   let [products,setPoduct] = useState([]);
   let [categories,setcategotries] = useState([]);
-
+  let productsFiltered = filterdata(products,props.filterby);
   useEffect(()=>{
           axios.get(`http://localhost:8000/api/items/bycategory/${category}`).then(res=>{
             products = res.data.data
@@ -128,10 +129,19 @@ function ProductsLayout(props) {
       <Container className="mt-3">
         <SubCategories category= {category} categories={categories}  getBysubCategory={getproductsBysubCategory}/>
       </Container>
-      <ListProducts category={category} products={products} />
+      
+      <ListProducts category={category} products={productsFiltered}  />
       </Container>
   );
 }
-
+function filterdata(data,filterwith) {
+  if(data.length > 0){
+   return data.filter(prod=>prod.title.toLowerCase().includes(filterwith.toLowerCase()))
+  }else{
+    return []
+  }
+  
+  
+}
 
 export default ProductsLayout;

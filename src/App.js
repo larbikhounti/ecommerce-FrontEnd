@@ -21,15 +21,23 @@ function App() {
 
   const [productCount, setProductCount] = useState(0);
   const [itemsBag] = useState([]);
+  const [filterby,setfilterby] = useState("");
   function myProductCount() {
     setProductCount(productCount + cookies.get("productCount"));
   }
-
+  function search(e) {
+    if(e){
+      setfilterby(e.target.value)
+      console.log(filterby)
+    }
+    
+  }
+  
   return (
     <Router>
       <div className="App ">
         <ProductsContext.Provider value={itemsBag}>
-          <NavBar productCount={productCount} />
+          <NavBar productCount={productCount} search={search} />
         </ProductsContext.Provider>
         <Switch>
           <Route exact path="/">
@@ -42,7 +50,7 @@ function App() {
           </Route>
           <Route path="/:category">
             <Slider/>
-            <ProductsLayout />
+            <ProductsLayout filterby={filterby}/>
           </Route>
         </Switch>
       </div>
