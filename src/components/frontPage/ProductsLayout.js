@@ -10,44 +10,50 @@ import axios from "axios"
 import { Link, useParams } from "react-router-dom";
 import {useState,useEffect} from "react";
 import ListProducts from "./ListProducts";
+import SubCategories from "./SubCategories";
 function ProductsLayout(props) {
   let {category} = useParams("category");
   const [value, setValue] = useState(false);
   let [filterBy,setFilterBy] = useState(false);
- 
   let [products,setPoduct] = useState([]);
-  let [mycatgory,setmygategory] = useState(['women','men','kids']);
-
- 
- 
- 
+  let [categories,setcategotries] = useState([]);
 
   useEffect(()=>{
-    axios.get(`http://localhost:8000/api/items/bycategory/${category}`).then(res=>{
-      products = res.data.data
-     setPoduct(products)
-     setValue(true);
-    })
+          axios.get(`http://localhost:8000/api/items/bycategory/${category}`).then(res=>{
+            products = res.data.data
+          setPoduct(products)
+          setValue(true);
+       }).then(()=>{
+        axios.get(`http://localhost:8000/api/categories`).then(res=>{
+          categories = res.data.data;
+          setcategotries(categories);
+         
+        })
+       })
   },[value])
   
   function getproducts(gender){
-    
-   // setmygategory(category);
     console.log("inside get products "+gender);
     axios.get(`http://localhost:8000/api/items/bycategory/${gender}`).then(res=>{
       products = res.data.data
-    // setPoduct(products)
+  
+     console.log(products)
+     setPoduct(products)
+    
+    })
+  }
+  function getproductsBysubCategory(gender,subcategory){
+    console.log("inside get products "+gender);
+    axios.get(`http://localhost:8000/api/items/bysubcategory/${gender}/${subcategory}`).then(res=>{
+      products = res.data.data
+  
      console.log(products)
      setPoduct(products)
      
     
-     //products = res.data.data
-     // console.log(products)
     })
-    
-   
   }
-
+ 
 
   function setMyFilterBy(params) {
     //filterBy = params
@@ -69,7 +75,7 @@ function ProductsLayout(props) {
           
         }}
             className={
-              mycatgory === "women"
+              category === "women"
                 ? "ml-2 font-weight-bold text-uppercase"
                 : "ml-2  text-uppercase"
             }
@@ -88,7 +94,7 @@ function ProductsLayout(props) {
              
             }}
             className={
-              mycatgory === "men"
+              category === "men"
                 ? "ml-2 font-weight-bold text-uppercase"
                 : "ml-2  text-uppercase"
             }
@@ -107,7 +113,7 @@ function ProductsLayout(props) {
            
           }}
             className={
-              mycatgory === "kids"
+              category === "kids"
                 ? "ml-2 font-weight-bold text-uppercase "
                 : "ml-2  text-uppercase"
             }
@@ -120,35 +126,12 @@ function ProductsLayout(props) {
       </ButtonGroup>
       <br />
       <Container className="mt-3">
-       {loadSubCategory(mycatgory,setMyFilterBy)}
+        <SubCategories category= {category} categories={categories}  getBysubCategory={getproductsBysubCategory}/>
       </Container>
-      <ListProducts products={products} />
+      <ListProducts category={category} products={products} />
       </Container>
   );
 }
-function loadSubCategory(param,setFilterBy) {
-  if(param){
-    return (<div>
-    <Button onClick={()=>setFilterBy("all")}  variant="dark" className="ml-1 border">
-    All products
-    </Button>
-    <Button onClick={()=>setFilterBy("shoes")}  variant="white" className="ml-1 border ">
-    SHOES
-    </Button>
-    <Button onClick={()=>setFilterBy("tops")}  variant="white" className="ml-1 border">
-    TOPS
-    </Button>
-    <Button onClick={()=>setFilterBy("pants and tights")}  variant="white" className="ml-1 border">
-    PANTS AND TIGHTS
-    </Button>
-    <Button onClick={()=>setFilterBy("new arrivals")}  variant="white" className="ml-1 border">
-    NEW ARRIVALS
-    </Button>
-   
-  
-    </div>)
-        
-  }
-}
+
 
 export default ProductsLayout;
