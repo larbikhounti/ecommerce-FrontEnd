@@ -9,12 +9,13 @@ import {
 import axios from "axios"
 import { Link, useParams } from "react-router-dom";
 import {useState,useEffect} from "react";
+import ListProducts from "./ListProducts";
 function ProductsLayout(props) {
   let {category} = useParams("category");
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(false);
   let [filterBy,setFilterBy] = useState(false);
  
-  let [products,setPoduct] = useState();
+  let [products,setPoduct] = useState([]);
   let [mycatgory,setmygategory] = useState(['women','men','kids']);
 
  
@@ -25,14 +26,15 @@ function ProductsLayout(props) {
     axios.get(`http://localhost:8000/api/items/bycategory/${category}`).then(res=>{
       products = res.data.data
      setPoduct(products)
+     setValue(true);
     })
   },[value])
   
-
-  function getproducts(mycount){
+  function getproducts(gender){
+    
    // setmygategory(category);
-    console.log("inside get products "+mycatgory[mycount]);
-    axios.get(`http://localhost:8000/api/items/bycategory/${mycatgory[mycount]}`).then(res=>{
+    console.log("inside get products "+gender);
+    axios.get(`http://localhost:8000/api/items/bycategory/${gender}`).then(res=>{
       products = res.data.data
     // setPoduct(products)
      console.log(products)
@@ -63,7 +65,7 @@ function ProductsLayout(props) {
           <Button
          onClick={()=>{
          
-          getproducts(0)
+          getproducts("women")
           
         }}
             className={
@@ -82,7 +84,7 @@ function ProductsLayout(props) {
           <Button
              onClick={()=>{
              
-              getproducts(1)
+              getproducts("men")
              
             }}
             className={
@@ -101,12 +103,12 @@ function ProductsLayout(props) {
           <Button
            onClick={()=>{
              
-            getproducts(3)
+            getproducts("kids")
            
           }}
             className={
               mycatgory === "kids"
-                ? "ml-2 font-weight-bold text-uppercase"
+                ? "ml-2 font-weight-bold text-uppercase "
                 : "ml-2  text-uppercase"
             }
             variant="light"
@@ -120,21 +122,16 @@ function ProductsLayout(props) {
       <Container className="mt-3">
        {loadSubCategory(mycatgory,setMyFilterBy)}
       </Container>
-
-      <Row className="ProductsList min-vh-100">
-        {
-
-          checkIfThereIsProducts(products)
-        
-            
-       }
-      </Row>
-    </Container>
+      <ListProducts products={products} />
+      </Container>
   );
 }
 function loadSubCategory(param,setFilterBy) {
   if(param){
     return (<div>
+    <Button onClick={()=>setFilterBy("all")}  variant="dark" className="ml-1 border">
+    All products
+    </Button>
     <Button onClick={()=>setFilterBy("shoes")}  variant="white" className="ml-1 border ">
     SHOES
     </Button>
@@ -147,6 +144,7 @@ function loadSubCategory(param,setFilterBy) {
     <Button onClick={()=>setFilterBy("new arrivals")}  variant="white" className="ml-1 border">
     NEW ARRIVALS
     </Button>
+   
   
     </div>)
         
@@ -154,46 +152,3 @@ function loadSubCategory(param,setFilterBy) {
 }
 
 export default ProductsLayout;
-function checkIfThereIsProducts(products) {
-  if(products !== undefined){  
-        
-   return products.map((element, index) => {
-      return (
-        <Col md={3} key={element.id} className="text-center mt-4">
-          <Card style={{ width: "100%" }} border="light">
-            <Link to={"/item/" + element.slug}>
-              <Card.Img
-                variant="top"
-                src={element.picture}
-                style={{ minHeight: "200px" }}
-              />
-            </Link>
-            <Card.Body style={{ Height: "100px" }}>
-              <Card.Title>{element.title}</Card.Title>
-              <Card.Text>${element.price}</Card.Text>
-            </Card.Body >
-            <Link
-              
-                style={{ textDecoration: "none", color: "black"}}
-                to={"/item/" + element.slug}
-              >
-            <Button
-              variant="light"
-              style={{ border: "1px solid black", color: "#fffff",width:"100%" }}
-            >
-              
-                More Info
-            
-            </Button>
-            </Link>
-          </Card>
-        </Col>
-      );
-    
-   
-  })
-  }else{
-    <h1>hehe</h1>
-  }
-
-}
