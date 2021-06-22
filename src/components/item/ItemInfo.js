@@ -35,7 +35,7 @@ function ItemInfo() {
     if (productInfo.length > 0) {
       
       if (cookies.get("myBag") === undefined) {
-        cookies.set("myBag", [], { path: "/" });
+        cookies.set("myBag", JSON.stringify([]), { path: "/" });
       }
     
       
@@ -56,16 +56,21 @@ function ItemInfo() {
      //console.log("cookies in iteminfo "+cookies.get("myBag"));
      
       
-     saveToStorage(product);
+     saveToStorage(newProduct);
       myProductCount();
     }
   }
  function saveToStorage(myproduct) {
-    let test  = myproduct;
+   let  mybah = cookies.get("myBag")
+   console.log("myBagproducts "+myproduct)
+   mybah.push(myproduct);
+   
+    let test  =  JSON.stringify(mybah);
     //console.log(myproduct)
-    cookies.set("myBag",[test],{secure: true, sameSite: 'none',path : '/'})
-  
-    console.log("new products "+cookies.get("myBag"))
+    cookies.set("myBag",test,{secure: true, sameSite: 'none',path : '/'})
+    let corrent = cookies.get("myBag")
+    //console.log("new products "+corrent[1].color)
+    
     //let correntBag = cookies.get("myBag");
     //let coorre = correntBag;
    // coorre.push(product);

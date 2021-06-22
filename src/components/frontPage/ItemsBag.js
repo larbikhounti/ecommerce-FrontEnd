@@ -15,11 +15,16 @@ function ItemBag(props) {
   let [rerender,setRenrander]= useState(true)
   const cookies = new Cookies();
   let setHideToFalse = props.mystate;
+  if(cookies.get("myBag") !== []){
+    let mybagg= cookies.get("myBag");
+    var items = mybagg;
+  }else{
+    items = [];
+  }
   
-  let items = cookies.get("myBag");
   console.log(" bag = "+items)
  // get total of  price
- if(items.length !== 0){
+ if(items.length  !== 0){
   let totalPrice = items.map(elem =>elem.price * elem.quantity).reduce((acc,prc)=> acc +prc).toFixed(2)
   total= totalPrice
  }
