@@ -7,9 +7,9 @@ import  store2  from "store2";
 import { AddToBasket } from "../../App";
 import InnerImageZoom from "react-inner-image-zoom";
 import axios from "axios";
-function ItemInfo() {
+function ItemInfo(props) {
   const cookies = new Cookies();
-  let { myProductCount } = useContext(AddToBasket);
+  //let { myProductCount } = useContext(AddToBasket);
   let [quantity, setQuantity] = useState(1);
   let [color, setColor] = useState("#");
   let [size, setSize] = useState("#");
@@ -57,7 +57,7 @@ function ItemInfo() {
      
       
      saveToStorage(newProduct);
-      myProductCount();
+      props.myProductCount();
     }
   }
  function saveToStorage(myproduct) {
@@ -69,6 +69,7 @@ function ItemInfo() {
     //console.log(myproduct)
     cookies.set("myBag",test,{secure: true, sameSite: 'none',path : '/'})
     let corrent = cookies.get("myBag")
+    cookies.set("productCount",corrent.length,{secure: true, sameSite: 'none',path : '/'})
     //console.log("new products "+corrent[1].color)
     
     //let correntBag = cookies.get("myBag");

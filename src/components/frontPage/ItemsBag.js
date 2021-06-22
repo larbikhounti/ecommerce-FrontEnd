@@ -35,7 +35,8 @@ function ItemBag(props) {
  function removeFromBag(index) {
   items.splice(index,1)
   cookies.set("myBag",items,{secure: true, sameSite: 'none',path : '/'})
-  cookies.set("productCount",items.length)
+   let bag = cookies.get("myBag")
+  cookies.set("productCount",bag.length,{secure: true, sameSite: 'none',path : '/'})
   setRenrander(!rerender)
 
 }

@@ -14,16 +14,22 @@ export const ProductsContext = react.createContext();
 export const AddToBasket = react.createContext();
 
 function App() {
-  const cookies = new Cookies();
-  if (cookies.get("myBag") === undefined) {
-    cookies.set("myBag", [], { path: "/" });
-  }
-
-  const [productCount, setProductCount] = useState(0);
+  let [productCount, setProductCount] = useState(0);
   const [itemsBag] = useState([]);
   const [filterby,setfilterby] = useState("");
+  const cookies = new Cookies();
+
+  if (cookies.get("myBag") === undefined) {
+    cookies.set("myBag", [], { path: "/" });
+  }else{
+    
+    
+  }
+
   function myProductCount() {
-    setProductCount(productCount + cookies.get("productCount"));
+    let pro = cookies.get("myBag");
+    setProductCount(productCount + pro.length + 1);
+    console.log("count adddd "+ productCount)
   }
   function search(e) {
     if(e){
@@ -45,7 +51,7 @@ function App() {
           </Route>
           <Route path="/item/:slug">
             <AddToBasket.Provider value={{ myProductCount }}>
-              <ItemInfo />
+              <ItemInfo myProductCount={myProductCount} />
             </AddToBasket.Provider>
           </Route>
           <Route path="/:category">
