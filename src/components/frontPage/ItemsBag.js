@@ -15,10 +15,11 @@ function ItemBag(props) {
   let [rerender,setRenrander]= useState(true)
   const cookies = new Cookies();
   let setHideToFalse = props.mystate;
-  let items = JSON.parse(cookies.get("myBag"));
+  
+  let items = cookies.get("myBag");
   console.log(" bag = "+items)
  // get total of  price
- if(items.length > 0){
+ if(items.length !== 0){
   let totalPrice = items.map(elem =>elem.price * elem.quantity).reduce((acc,prc)=> acc +prc).toFixed(2)
   total= totalPrice
  }
@@ -28,7 +29,7 @@ function ItemBag(props) {
  }
  function removeFromBag(index) {
   items.splice(index,1)
-  cookies.set("myBag",items)
+  cookies.set("myBag",items,{secure: true, sameSite: 'none',path : '/'})
   cookies.set("productCount",items.length)
   setRenrander(!rerender)
 

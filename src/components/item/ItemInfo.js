@@ -61,7 +61,7 @@ function ItemInfo() {
     }
   }
  function saveToStorage(myproduct) {
-    let test  = JSON.stringify(myproduct);
+    let test  = myproduct;
     //console.log(myproduct)
     cookies.set("myBag",[test],{secure: true, sameSite: 'none',path : '/'})
   
