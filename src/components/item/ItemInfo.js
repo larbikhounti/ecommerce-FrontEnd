@@ -1,8 +1,9 @@
 import { useContext, useState,useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Col, Row, Container, Form, Button } from "react-bootstrap";
+import { Col, Row, Container, Form, Button,Carousel } from "react-bootstrap";
 import Cookies from "universal-cookie";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+import  store2  from "store2";
 import { AddToBasket } from "../../App";
 import InnerImageZoom from "react-inner-image-zoom";
 import axios from "axios";
@@ -14,9 +15,9 @@ function ItemInfo() {
   let [size, setSize] = useState("#");
   const [value, setValue] = useState(false);
   let [productInfo,setProductInfo] = useState([]);
-  if (cookies.get("myBag") === undefined) {
-    cookies.set("myBag", [], { path: "/" });
-  }
+  let [product,setproduct] = useState([]);
+  
+  
   let { slug } = useParams();
 
   useEffect(()=>{
@@ -28,19 +29,52 @@ function ItemInfo() {
   
  })
 },[value])
-  /*
+  
   function AddToBasketClicked(e) {
-    let product = productInfo.find((item) => item.slug === slug);
+  
+    if (productInfo.length > 0) {
+      
+      if (cookies.get("myBag") === undefined) {
+        cookies.set("myBag", [], { path: "/" });
+      }
+    
+      
+      let newProduct = {};
+      newProduct.quantity = quantity;
+      newProduct.color = color;
+      newProduct.size = size;
+      newProduct.picture = productInfo[0].picture;
+      newProduct.title = productInfo[0].title;
+      newProduct.price = productInfo[0].price;
+      //console.log("new product =  "+newProduct)
 
-    if (product !== []) {
-      product.quantity = quantity;
-      product.color = color;
-      product.size = size;
-      saveToStorage(product, cookies);
+      product.push(newProduct);
+      //setproduct(product)
+      
+      //cookies.set("myBag",product,{secure: true, sameSite: 'none',path: '/'});
+      //console.log("state in item info =  "+product)
+     //console.log("cookies in iteminfo "+cookies.get("myBag"));
+     
+      
+     saveToStorage(product);
       myProductCount();
     }
   }
-  */
+ function saveToStorage(myproduct) {
+    let test  = JSON.stringify(myproduct);
+    //console.log(myproduct)
+    cookies.set("myBag",[test],{secure: true, sameSite: 'none',path : '/'})
+  
+    console.log("new products "+cookies.get("myBag"))
+    //let correntBag = cookies.get("myBag");
+    //let coorre = correntBag;
+   // coorre.push(product);
+   // cookies.set("myBag", coorre, { path: "/" });
+   // cookies.set("productCount", coorre.length, { path: "/" });
+   
+  }
+  
+  
   function setMyQuantity(e) {
     console.log(e.target.value);
     setQuantity(e.target.value);
@@ -69,14 +103,25 @@ function ItemInfo() {
       {productInfo.length > 0 ? productInfo.map((product, index) => {
         if (slug === product.slug) {
           return (
+            <div>
             <Row key={product.id}>
               <Col md={6}>
-                <div className="product-image w-100">
-                  <InnerImageZoom
-                    src={product.picture}
-                    zoomSrc={product.picture}
+              <Carousel fade>
+                <Carousel.Item>
+                  <img className="d-block w-100" src={product.picture} alt="First slide"
                   />
-                </div>
+                </Carousel.Item>
+                {product.pictures.map((pic,index)=>{
+                return  <Carousel.Item key={index}>
+                    <img className="d-block w-100" src={pic.image_path} alt="Second slide"
+                    />
+                  </Carousel.Item>
+
+                })}
+
+              </Carousel>
+
+
               </Col>
               <Col md={6}>
                 <Form>
@@ -99,6 +144,8 @@ function ItemInfo() {
                       <option>4</option>
                       <option>5</option>
                       <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
                     </Form.Control>
                     <br />
                     <Form.Label>Color</Form.Label>
@@ -110,9 +157,10 @@ function ItemInfo() {
                       custom
                       onChange={setMyColor}
                     >
+                      <option key={-1} value={-1}>#</option>
                       {
                         product.color.map((item,index)=>{
-                          return <option key={index} value={item.id}>{item.name}</option> 
+                          return <option key={index} value={item.name}>{item.name}</option> 
                         })
                       }
                      
@@ -127,9 +175,10 @@ function ItemInfo() {
                       custom
                       onChange={setMySize}
                     >
+                      <option key={-1} value={-1}>#</option>
                       {
                         product.size.map((item,index)=>{
-                          return <option key={index} value={item.id}>{item.name}</option> 
+                          return <option key={item.id} value={item.name}>{item.name}</option> 
                         })
                       }
                     </Form.Control>
@@ -139,7 +188,7 @@ function ItemInfo() {
                     <Button
                       className="w-100"
                       variant="primary"
-                     // onClick={AddToBasketClicked}
+                      onClick={AddToBasketClicked}
                       p-index={index}
                     >
                       ADD TO CART
@@ -158,17 +207,21 @@ function ItemInfo() {
                 </Form>
               </Col>
             </Row>
+            <Row className="w-100 container content-center mt-5">
+            <h1>Description</h1>         
+            <div   dangerouslySetInnerHTML={{ __html:product.descreption  }}>
+              </div>
+            
+            </Row>
+            
+            
+              
+            </div>
           );
         }
       }):<h1>getting product..</h1>}
     </Container>
   );
-}
-function saveToStorage(product, cookies) {
-  let correntBag = cookies.get("myBag");
-  correntBag.push(product);
-  cookies.set("myBag", correntBag, { path: "/" });
-  cookies.set("productCount", correntBag.length, { path: "/" });
 }
 
 export default ItemInfo;

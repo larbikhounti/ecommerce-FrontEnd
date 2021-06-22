@@ -15,9 +15,10 @@ function ItemBag(props) {
   let [rerender,setRenrander]= useState(true)
   const cookies = new Cookies();
   let setHideToFalse = props.mystate;
-  let items = cookies.get("myBag")
+  let items = JSON.parse(cookies.get("myBag"));
+  console.log(" bag = "+items)
  // get total of  price
- if(items.length !== 0){
+ if(items.length > 0){
   let totalPrice = items.map(elem =>elem.price * elem.quantity).reduce((acc,prc)=> acc +prc).toFixed(2)
   total= totalPrice
  }
@@ -62,7 +63,7 @@ function ItemBag(props) {
                         <hr />
                         <Col md={6} sm={6} xs={6}>
                           <div className="product-image ">
-                            <Image src={item.imageUrl} width="100%" />
+                            <Image src={item.picture} width="100%" />
                           </div>
                         </Col>
                         <Col md={6} sm={6} xs={6}>
