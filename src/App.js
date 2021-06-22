@@ -10,6 +10,8 @@ import {
 import ItemInfo from "./components/item/ItemInfo";
 import Cookies from "universal-cookie";
 import  Slider  from "./components/item/Slider";
+import CheckoutPage from "./components/checkout/checkoutPage"
+import Login from "./components/auth/login"
 export const ProductsContext = react.createContext();
 export const AddToBasket = react.createContext();
 
@@ -54,10 +56,17 @@ function App() {
               <ItemInfo myProductCount={myProductCount} />
             </AddToBasket.Provider>
           </Route>
+          <Route  path="/checkoutPage">
+             <CheckoutPage/>
+          </Route>
+          <Route  path="/login">
+             <Login/>
+          </Route>
           <Route path="/:category">
             <Slider/>
             <ProductsLayout filterby={filterby}/>
           </Route>
+          
         </Switch>
       </div>
     </Router>

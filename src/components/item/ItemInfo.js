@@ -3,10 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { Col, Row, Container, Form, Button,Carousel } from "react-bootstrap";
 import Cookies from "universal-cookie";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
-import  store2  from "store2";
-import { AddToBasket } from "../../App";
-import InnerImageZoom from "react-inner-image-zoom";
-import axios from "axios";
+
+import axios from "axios";  
 function ItemInfo(props) {
   const cookies = new Cookies();
   //let { myProductCount } = useContext(AddToBasket);

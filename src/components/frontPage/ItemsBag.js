@@ -7,6 +7,7 @@ import {
   Row,
   Container,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import {useState} from "react"
 import Cookies from 'universal-cookie';
 
@@ -53,9 +54,26 @@ function ItemBag(props) {
         size="lg"
         aria-labelledby="example-custom-modal-styling-title"
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-custom-modal-styling-title">
-            JUST ADDED TO YOUR CART
+        <Modal.Header closeButton className="w-100">
+          <Modal.Title id="example-custom-modal-styling-title w-100">
+            <Table hover className="w-100">
+            <thead>
+              <tr>
+                <th>Shipping</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>free shipping</td>
+                <td>${total}</td>
+                <td closeButton>
+                  <Link closeButton to="checkoutPage"><Button  variant="success">Check Out</Button></Link>
+                </td>
+              </tr>
+            </tbody>
+          </Table>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -113,8 +131,8 @@ function ItemBag(props) {
               <tr>
                 <td>free shipping</td>
                 <td>${total}</td>
-                <td>
-                  <Button variant="success">Check Out</Button>
+                <td closeButton>
+                  <Link closeButton to="checkoutPage"><Button  variant="success">Check Out</Button></Link>
                 </td>
               </tr>
             </tbody>
