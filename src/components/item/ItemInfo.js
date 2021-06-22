@@ -143,7 +143,7 @@ function ItemInfo(props) {
                       custom
                       onChange={setMyQuantity}
                     >
-                      
+                      <option>#</option>
                       <option>1 </option>
                       <option>2</option>
                       <option>3</option>
