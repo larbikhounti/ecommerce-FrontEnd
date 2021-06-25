@@ -19,10 +19,23 @@ function Checkout(props) {
   
 
     function orderNow() {
+
       if(mybagg.length > 0){
+let config = {
+  headers: {
+    headers: {"Access-Control-Allow-Origin": "*"}
+  }
+}
         axios.post("http://127.0.0.1:8000/api/order",{
+		
           mybag : mybagg
-         }).then(res=>console.log(res)).catch(err=>console.log(err));
+         },config ).then(res=>{
+          console.log(res.data.state)
+           if(res.data.state === 1){
+            
+             document.querySelector(".message").className = "text-success mt-5 message";
+           }
+         }).catch(err=>console.log(err));
       }
      
     }
@@ -79,7 +92,10 @@ function Checkout(props) {
           <h1>{cookies.get("full_name")}</h1>
           <p>{cookies.get("address")}</p>
           <Button variant="primary" onClick={orderNow} className="w-25">order</Button>
-
+          <div className="d-none message mt-5">
+          <h1 className="text-success  ">Ordered successfully</h1>
+          <img width="50px" height="50px" alt ="success" src="https://lh3.googleusercontent.com/proxy/toq04kMSMFyI_NvxZk5CQW9uuyz_7sW8Y138Ypm7bOeCAHUh6gV4SG1rNM3u39BX2kRYqag9N6d_BhsPsEAkIZQlHSjUtar1PjP1EOygVa-q-46uLt9rCks26qsn8A"/>
+          </div >
         </div>
       </div>
       </Col>
