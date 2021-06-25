@@ -69,7 +69,7 @@ function ItemBag(props) {
                 <td>free shipping</td>
                 <td>${total}</td>
                 <td closeButton>
-                  <Link closeButton to="checkoutPage"><Button  variant="success">Check Out</Button></Link>
+                  <Link closeButton to="/checkoutPage"><Button  variant="success">Check Out</Button></Link>
                 </td>
               </tr>
             </tbody>
@@ -132,7 +132,7 @@ function ItemBag(props) {
                 <td>free shipping</td>
                 <td>${total}</td>
                 <td closeButton>
-                  <Link closeButton to="checkoutPage"><Button  variant="success">Check Out</Button></Link>
+                  <Link closeButton to="/checkoutPage"><Button  variant="success">Check Out</Button></Link>
                 </td>
               </tr>
             </tbody>

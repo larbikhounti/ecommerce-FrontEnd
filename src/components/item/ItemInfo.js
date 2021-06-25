@@ -44,6 +44,9 @@ function ItemInfo(props) {
       newProduct.picture = productInfo[0].picture;
       newProduct.title = productInfo[0].title;
       newProduct.price = productInfo[0].price;
+      newProduct.item_id = productInfo[0].id;
+      newProduct.slug = slug;
+      newProduct.client_id = cookies.get("clientId");
       //console.log("new product =  "+newProduct)
 
       product.push(newProduct);
@@ -189,25 +192,27 @@ function ItemInfo(props) {
                   </Form.Group>
 
                   <Form.Group controlId="formBasicActions">
-                    <Button
+                    {
+
+                      cookies.get("clientId") === "false"?<Link to="/login"><Button
                       className="w-100"
                       variant="primary"
-                      onClick={AddToBasketClicked}
+                      
                       p-index={index}
                     >
-                      ADD TO CART
-                    </Button>
+                      Login
+                    </Button></Link>
+                   :<Button
+                    className="w-100"
+                    variant="primary"
+                    onClick={AddToBasketClicked}
+                    p-index={index}
+                  >
+                    add to cart
+                  </Button> }
+                    
                   </Form.Group>
-                  <Form.Group controlId="formBasicActions2">
-                    <Button
-                      className="w-100"
-                      variant="primary"
-                      type="submit"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      Buy it now
-                    </Button>
-                  </Form.Group>
+                
                 </Form>
               </Col>
             </Row>

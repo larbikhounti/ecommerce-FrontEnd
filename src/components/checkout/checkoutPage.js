@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState } from "react";
 import {
   Container,
   Col,
@@ -8,13 +10,26 @@ import {
   Form,Image
 } from "react-bootstrap";
 import Cookies from 'universal-cookie';
+
 function Checkout(props) {
+ let [items,setItems] = useState([]);
   const cookies = new Cookies();
   let mybagg= cookies.get("myBag");
-  var items = mybagg;
+  items = mybagg;
+  
+
+    function orderNow() {
+      if(mybagg.length > 0){
+        axios.post("http://127.0.0.1:8000/api/order",{
+          mybag : mybagg
+         }).then(res=>console.log(res)).catch(err=>console.log(err));
+      }
+     
+    }
+
   return (
     <Row>
-      <Col className ="mt-5">
+      <Col className ="mt-5 ml-5 mr-auto ">
       <Container>
          
          {items != null
@@ -63,7 +78,7 @@ function Checkout(props) {
         <div className="ml-auto mr-auto">
           <h1>{cookies.get("full_name")}</h1>
           <p>{cookies.get("address")}</p>
-          <Button variant="primary" className="w-25">order</Button>
+          <Button variant="primary" onClick={orderNow} className="w-25">order</Button>
 
         </div>
       </div>
